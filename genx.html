@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Generation X</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .header {
+      background-color: #007bff;
+      padding: 10px 20px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo a {
+      font-size: 28px;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+
+    .navbar {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      align-items: center;
+      flex: 2;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 14px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 10px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .auth-buttons button {
+      background-color: white;
+      color: #007bff;
+      border: 1px solid white;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .auth-buttons button:hover {
+      background-color: #e6e6e6;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .generation-card h2 {
+      font-size: 26px;
+      color: #007bff;
+    }
+
+    .generation-card p {
+      font-style: italic;
+      color: #555;
+    }
+
+    .generation-card ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .generation-card li {
+      background-color: #f9f9f9;
+      margin-bottom: 12px;
+      padding: 12px 16px;
+      border-left: 4px solid #007bff;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="logo">
+      <a href="midpage.html">Q.U.E.S.T.</a>
+    </div>
+    <div class="navbar">
+      <div class="dropdown">
+        <button class="dropbtn">Preliminary Activities</button>
+        <div class="dropdown-content">
+          <a href="preliminary.pdf">Preliminary</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Discussion/Lesson</button>
+        <div class="dropdown-content">
+          <a href="CONTEXT CLUES.pdf">PowerPoint Presentation</a>
+          <a href="Video Lesson.mp4">Video Lesson</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Application</button>
+        <div class="dropdown-content">
+          <a href="Application.pdf">Application</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Quiz</button>
+        <div class="dropdown-content">
+          <a href="quiz.html">Start Quiz</a>
+          <a href="#">See Quiz Scores</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Brochure</button>
+        <div class="dropdown-content">
+          <a href="EM20-brochure.pdf">Open Brochure</a>
+        </div>
+      </div>
+    </div>
+       <div class="auth-buttons">
+       <a href="index.html">
+        <button class="gen-button">Sign In</button>
+      </a>
+      <a href="midpage.html">
+        <button class="gen-button">Sign Out</button>
+      </a>
+      <a href="signup.html">
+        <button class="gen-button">Sign Up</button>
+      </a>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="generation-card">
+      <h2>👩‍💼 Generation X (Born ~1965–1980)</h2>
+      <p>Language shaped by cynicism, early tech, and independence</p>
+      <ul>
+        <li>✅ <strong>“Ironic”</strong><br>🔍 Real meaning: A contradiction between expectation and reality<br>📍 Misused as "unfortunate."
+        </li>
+        <li>✅ <strong>“Ambivalent”</strong><br>🔍 Meant: Mixed feelings<br>📍 Often confused with "indifferent."
+        </li>
+        <li>✅ <strong>“Literally”</strong><br>🔍 Actually true<br>📍 Now also used for emphasis or exaggeration.
+        </li>
+        <li>✅ <strong>“Whatever”</strong><br>🔍 Popular Gen X phrase of apathy or rebellion<br>📍 Now iconic in sarcasm.
+        </li>
+        <li>✅ <strong>“Radical”</strong><br>🔍 80s slang meaning awesome or cool<br>📍 Now sounds retro or ironic.
+        </li>
+        <li>✅ <strong>“Sell out”</strong><br>🔍 Someone who sacrifices values for money or fame<br>📍 Term of cultural critique.
+        </li>
+        <li>✅ <strong>“Bodacious”</strong><br>🔍 Slang for bold or excellent<br>📍 Popularized by surfer/skater culture.
+        </li>
+        <li>✅ <strong>“Hack”</strong><br>🔍 Originally a tech term for clever coding<br>📍 Now also means life shortcut or DIY trick.
+        </li>
+        <li>✅ <strong>“Yuppie”</strong><br>🔍 Young Urban Professional <br>📍 Symbol of 80s ambition and consumerism.
+        </li>
+        <li>✅ <strong>“Grunge”</strong><br>🔍 Describes a music/fashion subculture <br>📍 Now used more broadly to describe a rough or unpolished look.
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Silent Generation</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    /* HEADER */
+    .header {
+      background-color: #007bff;
+      padding: 10px 20px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      flex: 1;
+    }
+
+    .logo a {
+      font-size: 28px;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+
+    .navbar {
+      flex: 2;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .auth-buttons {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .auth-buttons button {
+      background-color: white;
+      color: #007bff;
+      border: 1px solid white;
+      padding: 8px 12px;
+      margin-left: 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .auth-buttons button:hover {
+      background-color: #e6e6e6;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 14px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 10px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* CONTENT SECTION */
+    .generation-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .generation-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #007bff;
+    }
+
+    .generation-subtitle {
+      text-align: center;
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .term-card {
+      background-color: #f9f9f9;
+      border-left: 5px solid #007bff;
+      padding: 15px 20px;
+      margin: 15px 0;
+      border-radius: 8px;
+    }
+
+    .term-card h3 {
+      margin: 0;
+      color: #007bff;
+    }
+
+    .term-card p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo"><a href="midpage.html">Q.U.E.S.T.</a></div>
+    <div class="navbar">
+      <div class="dropdown">
+        <button class="dropbtn">Preliminary Activities</button>
+        <div class="dropdown-content">
+          <a href="preliminary.pdf">Preliminary</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Discussion/Lesson</button>
+        <div class="dropdown-content">
+          <a href="CONTEXT CLUES.pdf">PowerPoint</a>
+          <a href="Video Lesson.mp4">Video Lesson</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Application</button>
+        <div class="dropdown-content">
+          <a href="Application.pdf">Application</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Quiz</button>
+        <div class="dropdown-content">
+          <a href="quiz.html">Start Quiz</a>
+          <a href="#">See Quiz Scores</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Brochure</button>
+        <div class="dropdown-content">
+          <a href="EM20-brochure.pdf">Open Brochure</a>
+        </div>
+      </div>
+    </div>
+        <div class="auth-buttons">
+       <a href="index.html">
+        <button class="gen-button">Sign In</button>
+      </a>
+      <a href="midpage.html">
+        <button class="gen-button">Sign Out</button>
+      </a>
+      <a href="signup.html">
+        <button class="gen-button">Sign Up</button>
+      </a>
+    </div>
+  </div>
+
+  <!-- SILENT GENERATION CONTENT -->
+  <div class="generation-container">
+    <div class="generation-title">👴 Silent Generation (Born ~1928–1945)</div>
+    <div class="generation-subtitle">Language shaped by war, tradition, and formality</div>
+
+    <div class="term-card">
+      <h3>“Gay”</h3>
+      <p>✅ Common Use Then: “He’s in a gay mood today.”</p>
+      <p>🔍 Meant: Happy or carefree</p>
+      <p>📍 Now mostly associated with sexual orientation</p>
+    </div>
+
+    <div class="term-card">
+      <h3>“Swell”</h3>
+      <p>✅ Common Use: “That’s a swell idea!”</p>
+      <p>🔍 Meant: Excellent or very good</p>
+      <p>📍 Now sounds old-fashioned or sarcastic</p>
+    </div>
+
+    <div class="term-card">
+      <h3>“Negotiate”</h3>
+      <p>✅ Used in: Post-WWII diplomacy or work</p>
+      <p>🔍 Meant: To navigate or handle situations</p>
+      <p>📍 Now often only seen as formal or business-like</p>
+    </div>
+
+    <div class="term-card">
+      <h3>“Howdy”</h3>
+      <p>✅ Common Use: “Howdy, partner!”</p>
+      <p>🔍 Meant: Friendly hello</p>
+      <p>📍 Now seen as Western or old-fashioned</p>
+    </div>
+
+    <div class="term-card">
+      <h3>“Gee whiz”</h3>
+      <p>✅ Used for: Surprise or amazement</p>
+      <p>🔍 Meant: A mild exclamation</p>
+      <p>📍 Rarely used today, feels nostalgic</p>
+    </div>
+
+    <div class="term-card">
+      <h3>“Dungarees”</h3>
+      <p>✅ Meant: Blue jeans or work pants</p>
+      <p>🔍 Common term for trousers in the era</p>
+      <p>📍 Now replaced by “jeans”</p>
+    </div>
+
+    <div class="term-card">
+      <h3>“Court”</h3>
+      <p>✅ Used as: “He’s courting her.”</p>
+      <p>🔍 Meant: Dating seriously with intent to marry</p>
+      <p>📍 Now replaced by “dating”</p>
+    </div>
+
+    <div class="term-card">
+      <h3>“Malarkey”</h3>
+      <p>✅ Meant: Nonsense or foolish talk</p>
+      <p>🔍 Popular in political or tough talk</p>
+      <p>📍 Rarely used in modern conversation</p>
+    </div>
+
+    <div class="term-card">
+      <h3>“Whippersnapper”</h3>
+      <p>✅ Meant: An impudent or young person</p>
+      <p>🔍 Used by elders to talk about youth</p>
+      <p>📍 Now mostly a joke or cliché</p>
+    </div>
+
+    <div class="term-card">
+      <h3>“Golly”</h3>
+      <p>✅ Used as: “Golly, that’s amazing!”</p>
+      <p>🔍 Meant: Expression of surprise</p>
+      <p>📍 Now rarely heard, considered dated</p>
+    </div>
+  </div>
+
+</body>
+</html>

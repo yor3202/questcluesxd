@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - QUEST</title>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    .signup-container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .password-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .password-container input {
+      flex-grow: 1;
+    }
+
+    .password-toggle {
+      margin-left: 10px;
+      cursor: pointer;
+      color: #007bff;
+    }
+
+    .password-toggle:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="signup-container">
+    <h2>Sign Up for QUEST</h2>
+    <!-- Form Fields -->
+    <input type="text" id="name" placeholder="Full Name" required />
+    <input type="number" id="age" placeholder="Age" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="text" id="username" placeholder="Username" required />
+
+    <!-- Password and Confirm Password -->
+    <div class="password-container">
+      <input type="password" id="password" placeholder="Password" required />
+      <span class="password-toggle" onclick="togglePassword()">Show</span>
+    </div>
+    <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+    
+    <button onclick="signUp()">Sign Up</button>
+
+    <div class="signup-link">
+      <p>Already have an account? <a href="index.html">Log In</a></p>
+    </div>
+  </div>
+
+  <script>
+    const auth = firebase.auth();
+
+    // Toggle Password Visibility
+    function togglePassword() {
+      const passwordField = document.getElementById("password");
+      const confirmPasswordField = document.getElementById("confirmPassword");
+      const toggleText = document.querySelector(".password-toggle");
+
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        confirmPasswordField.type = "text";
+        toggleText.textContent = "Hide";
+      } else {
+        passwordField.type = "password";
+        confirmPasswordField.type = "password";
+        toggleText.textContent = "Show";
+      }
+    }
+
+    // Sign Up Logic
+    function signUp() {
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+      const email = document.getElementById("email").value;
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+
+      // Basic validation
+      if (!name || !age || !email || !username || !password || !confirmPassword) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+      }
+
+      // Firebase authentication for creating a user
+      auth.createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          alert("Account created successfully!");
+
+          // Optionally, you can store additional user info in Firestore or Realtime Database.
+          // Example: save 'name', 'age', 'username', etc. to Firestore.
+
+          window.location.href = "index.html";  // Redirect after successful sign-up
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+    }
+  </script>
+
+</body>
+</html>

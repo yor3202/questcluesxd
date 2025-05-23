@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QUEST</title>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .header {
+      background-color: #007bff;
+      padding: 10px 20px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      flex: 1;
+    }
+
+    .logo a {
+      font-size: 28px;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+
+    .navbar {
+      flex: 2;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .auth-buttons {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .auth-buttons button {
+      background-color: white;
+      color: #007bff;
+      border: 1px solid white;
+      padding: 8px 12px;
+      margin-left: 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .auth-buttons button:hover {
+      background-color: #e6e6e6;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 14px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 10px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Centered button section */
+    .middle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 60px);
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .gen-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .gen-button {
+      background-color: white;
+      color: #007bff;
+      border: 2px solid #007bff;
+      padding: 12px 24px;
+      font-size: 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+      text-align: center;
+    }
+
+    .gen-button:hover {
+      background-color: #007bff;
+      color: white;
+    }
+  </style>
+</head>
+<body onload="checkLogin()">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">
+      <a href="midpage.html">Q.U.E.S.T.</a>
+    </div>
+    <div class="navbar">
+      <div class="dropdown">
+        <button class="dropbtn">Preliminary Activities</button>
+        <div class="dropdown-content">
+          <a href="preliminary.pdf">Preliminary</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Discussion/Lesson</button>
+        <div class="dropdown-content">
+          <a href="CONTEXT CLUES.pdf">Powerpoint Presentation</a>
+          <a href="Video Lesson.mp4">Video Lesson</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Application</button>
+        <div class="dropdown-content">
+          <a href="Application.pdf">Application</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Quiz</button>
+        <div class="dropdown-content">
+          <a href="quiz.html">Start Quiz</a>
+          <a href="#">See Quiz Scores</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Brochure</button>
+        <div class="dropdown-content">
+          <a href="EM20-brochure.pdf">Item 1</a>
+        </div>
+      </div>
+    </div>
+       <div class="auth-buttons">
+       <a href="index.html">
+        <button class="gen-button">Sign In</button>
+      </a>
+      <a href="midpage.html">
+        <button class="gen-button">Sign Out</button>
+      </a>
+      <a href="signup.html">
+        <button class="gen-button">Sign Up</button>
+      </a>
+    </div>
+  </div>
+
+  <!-- GENERATION BUTTONS IN MIDDLE -->
+  <div class="middle-container">
+    <div class="gen-section">
+      <a href="silentgen.html">
+  <button class="gen-button">Silent Gen (1928–1945)</button>
+</a>
+<a href="babyboom.html">
+  <button class="gen-button">Baby Boomers (1946–1964)</button>
+</a>
+<a href="genx.html">
+  <button class="gen-button">Generation X (1965–1980)</button>
+</a>
+<a href="millen.html">
+  <button class="gen-button">Millennials (1981–1996)</button>
+</a>
+<a href="genz.html">
+  <button class="gen-button">Gen Z (1997–2013)</button>
+</a>
+<a href="genalp.html">
+  <button class="gen-button">Gen Alpha (2013–Today)</button>
+</a>
+
+    </div>
+  </div>
+
+  <script>
+    const auth = firebase.auth();
+
+    function checkLogin() {
+      auth.onAuthStateChanged(user => {
+        if (user) {
+          document.getElementById('loginBtn').style.display = 'none';
+          document.getElementById('logoutBtn').style.display = 'inline-block';
+        } else {
+          document.getElementById('loginBtn').style.display = 'inline-block';
+          document.getElementById('logoutBtn').style.display = 'none';
+        }
+      });
+    }
+
+    function logIn() {
+      const email = prompt("Email:");
+      const password = prompt("Password:");
+      if (!email || !password) return;
+
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+          alert("Logged in!");
+        })
+        .catch(error => {
+          if (error.code === 'auth/user-not-found') {
+            if (confirm("User not found. Sign up?")) {
+              auth.createUserWithEmailAndPassword(email, password)
+                .then(() => alert("User created and logged in."))
+                .catch(err => alert(err.message));
+            }
+          } else {
+            alert(error.message);
+          }
+        });
+    }
+
+    function logOut() {
+      auth.signOut().then(() => {
+        alert("Logged out.");
+      });
+    }
+  </script>
+</body>
+</html>

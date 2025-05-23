@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vocabulary Quiz</title>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 30px;
+    }
+
+   .header {
+  background-color: #007bff;
+  padding: 10px 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* ← Keep this */
+  margin: -30px -30px 30px -30px;
+}
+
+    .logo {
+      flex: 1;
+    }
+
+    .logo a {
+      font-size: 28px;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+
+    .navbar {
+      flex: 2;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 14px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 10px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+.auth-buttons {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end; /* ← This ensures right alignment */
+}
+
+    .auth-buttons button {
+      background-color: white;
+      color: #007bff;
+      border: 1px solid white;
+      padding: 8px 12px;
+      margin-left: 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .auth-buttons button:hover {
+      background-color: #e6e6e6;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .question {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-left: 5px solid #007bff;
+      border-radius: 4px;
+    }
+
+    .options label {
+      display: block;
+      margin: 8px 0;
+    }
+
+    .feedback {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .correct {
+      color: green;
+    }
+
+    .incorrect {
+      color: red;
+    }
+
+    .score {
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body onload="checkLogin()">
+
+  <div class="header">
+    <div class="logo">
+      <a href="midpage.html">Q.U.E.S.T.</a>
+    </div>
+    <div class="navbar">
+      <div class="dropdown">
+        <button class="dropbtn">Preliminary Activities</button>
+        <div class="dropdown-content">
+          <a href="preliminary.pdf">Preliminary</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Discussion/Lesson</button>
+        <div class="dropdown-content">
+
+          <a href="CONTEXT CLUES.pdf">Powerpoint Presentation</a>
+          <a href="Video Lesson.mp4">Video Presentation</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Application</button>
+        <div class="dropdown-content">
+          <a href="Application.pdf">Application</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Quiz</button>
+        <div class="dropdown-content">
+          <a href="quiz.html">Start Quiz</a>
+          <a href="#">See Quiz Scores</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Brochure</button>
+        <div class="dropdown-content">
+          <a href="EM20-brochure.pdf">Open Brochure</a>
+        </div>
+      </div>
+    </div>
+       <div class="auth-buttons">
+       <a href="index.html">
+        <button class="gen-button">Sign In</button>
+      </a>
+      <a href="midpage.html">
+        <button class="gen-button">Sign Out</button>
+      </a>
+      <a href="signup.html">
+        <button class="gen-button">Sign Up</button>
+      </a>
+    </div>
+  </div>
+
+  <h1>Vocabulary Quiz</h1>
+
+  <div id="quiz-container"></div>
+
+  <div class="score" id="scoreDisplay"></div>
+
+  <button onclick="submitQuiz()">Submit Quiz</button>
+  <button onclick="location.reload()">Reset Quiz</button>
+
+  <script>
+    const auth = firebase.auth();
+
+    function checkLogin() {
+      auth.onAuthStateChanged(user => {
+        document.getElementById('loginBtn').style.display = user ? 'none' : 'inline-block';
+        document.getElementById('logoutBtn').style.display = user ? 'inline-block' : 'none';
+      });
+    }
+
+    function logIn() {
+      const email = prompt("Email:");
+      const password = prompt("Password:");
+      if (!email || !password) return;
+
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => alert("Logged in!"))
+        .catch(error => {
+          if (error.code === 'auth/user-not-found') {
+            if (confirm("User not found. Sign up?")) {
+              auth.createUserWithEmailAndPassword(email, password)
+                .then(() => alert("User created and logged in."))
+                .catch(err => alert(err.message));
+            }
+          } else {
+            alert(error.message);
+          }
+        });
+    }
+
+    function logOut() {
+      auth.signOut().then(() => alert("Logged out."));
+    }
+
+    const questions = [
+      {
+        text: 'My brother said, “I just freed myself from a very loquacious history professor. All he seemed to want was an audience.”',
+        choices: ['pretentious', 'grouchy', 'talkative', 'worried'],
+        answer: 'talkative'
+      },
+      {
+        text: 'There is no doubt that the idea of living in such a benign climate was appealing. The islanders seemed to keep their vitality and live longer than Europeans.',
+        choices: ['tropical', 'not malignant', 'kind', 'favorable'],
+        answer: 'favorable'
+      },
+      {
+        text: 'It is difficult to imagine a surfeit of talent in one individual, yet Leonard Bernstein simply does not have the time to make complete use of his talent as conductor, performer, writer, and lecturer.',
+        choices: ['excess', 'variety', 'superiority', 'lack'],
+        answer: 'excess'
+      },
+      {
+        text: 'There is a large demand all over the United States for plants indigenous to the desert. Many people in Arizona have made a good business of growing and selling cacti and other local plants.',
+        choices: ['native', 'necessary', 'foreign', 'alien'],
+        answer: 'native'
+      },
+      {
+        text: 'After the Romans left, a millennium and a half passed before people again lived in such comfort. Churchill wrote, “From the year 400 until the year 1900 no one had central heating and very few had hot baths.”',
+        choices: ['a decade', 'many years', '1000 years', 'a century'],
+        answer: '1000 years'
+      }
+    ];
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function renderQuiz() {
+      const container = document.getElementById('quiz-container');
+      const shuffledQuestions = shuffle([...questions]);
+
+      shuffledQuestions.forEach((q, index) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'question';
+        questionDiv.setAttribute('data-answer', q.answer);
+
+        const questionText = document.createElement('p');
+        questionText.innerHTML = `<strong>${index + 1}.</strong> ${q.text}`;
+        questionDiv.appendChild(questionText);
+
+        const optionsDiv = document.createElement('div');
+        optionsDiv.className = 'options';
+
+        q.choices.forEach(choice => {
+          const label = document.createElement('label');
+          const input = document.createElement('input');
+          input.type = 'radio';
+          input.name = `q${index}`;
+          input.value = choice;
+          label.appendChild(input);
+          label.innerHTML += ` ${choice}`;
+          optionsDiv.appendChild(label);
+        });
+
+        const feedbackDiv = document.createElement('div');
+        feedbackDiv.className = 'feedback';
+        optionsDiv.appendChild(feedbackDiv);
+
+        questionDiv.appendChild(optionsDiv);
+        container.appendChild(questionDiv);
+      });
+    }
+
+    function submitQuiz() {
+      const questions = document.querySelectorAll('.question');
+      let score = 0;
+
+      questions.forEach(q => {
+        const correctAnswer = q.getAttribute('data-answer');
+        const selected = q.querySelector('input[type="radio"]:checked');
+        const feedback = q.querySelector('.feedback');
+
+        if (selected) {
+          if (selected.value === correctAnswer) {
+            feedback.textContent = 'Correct!';
+            feedback.className = 'feedback correct';
+            score++;
+          } else {
+            feedback.textContent = `Incorrect. Correct Answer: ${correctAnswer}`;
+            feedback.className = 'feedback incorrect';
+          }
+        } else {
+          feedback.textContent = `No answer selected. Correct Answer: ${correctAnswer}`;
+          feedback.className = 'feedback incorrect';
+        }
+      });
+
+      document.getElementById('scoreDisplay').textContent = `You scored ${score} out of ${questions.length}.`;
+    }
+
+    window.onload = renderQuiz;
+  </script>
+</body>
+</html>
